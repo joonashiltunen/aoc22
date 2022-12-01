@@ -1,23 +1,23 @@
 ﻿let lines = System.IO.File.ReadLines("1.input");;
 
-let f x = 
-    match x with 
-        | "" -> None
-        | x -> Some(int x)
+let ints = 
+    lines 
+    |> Seq.map (fun x ->
+                match x with 
+                | "" -> None
+                | x -> Some(int x)) 
+    |> Seq.toList
 
-let ints = lines |> Seq.map(f) |> Seq.toList
-
-let calculateSums input =
-    let rec sums input (current:int) (biggest:int list)  = 
+let calculateSortedSums input =
+    let rec sums input current biggest  = 
         match input with
         | [] -> biggest
         | head::tail ->
             match head with
             | Some x -> sums tail (current + x) biggest
             | None -> sums tail 0 (current::biggest)
-    sums input 0 []
+    List.sortBy(fun x -> -x) (sums input 0 [])
 
-let all = calculateSums ints
-let sorted = List.sortBy(fun x -> -x) all
+let sortedSums = calculateSortedSums ints
 
-let result = sorted[0] + sorted[1] + sorted[2]
+let result = sortedSums[0] + sortedSums[1] + sortedSums[2]
