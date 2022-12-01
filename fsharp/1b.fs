@@ -16,7 +16,7 @@ let calculateSortedSums input =
             match head with
             | Some x -> sums tail (current + x) biggest
             | None -> sums tail 0 (current::biggest)
-    List.sortBy(fun x -> -x) (sums input 0 [])
+    sums input 0 [] |> List.sortBy(fun x -> -x)
 
 let sortedSums = calculateSortedSums ints
 
