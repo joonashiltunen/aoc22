@@ -2,7 +2,7 @@ def game_score(game):
     them = game[0]
     you = game[1]
     A_offset = ord("A")
-    X_offset = ord("X") - ord("A") + A_offset
+    X_offset = ord("X")
     them = ord(them) - A_offset
     you = ord(you) - X_offset
     result = you + 1
