@@ -7,5 +7,6 @@
     <Compile Include="1.fs" />
     <Compile Include="1b.fs" />
     <Compile Include="2.fs" />
+    <Compile Include="2b.fs" />
   </ItemGroup>
 </Project>
