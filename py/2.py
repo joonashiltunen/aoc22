@@ -1,10 +1,6 @@
 def game_score(game):
-    them = game[0]
-    you = game[1]
-    A_offset = ord("A")
-    X_offset = ord("X")
-    them = ord(them) - A_offset
-    you = ord(you) - X_offset
+    them = ord(game[0]) - ord("A")
+    you = ord(game[1]) - ord("X")
     result = you + 1
     if them == you:
         return result + 3
