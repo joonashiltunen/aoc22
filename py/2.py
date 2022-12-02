@@ -8,7 +8,7 @@ def game_score(game):
     result = you + 1
     if them == you:
         return result + 3
-    if you - them == 1 or you - them == -2:
+    if (you - them) % 3 == 1:
         return result + 6
     return result
 
