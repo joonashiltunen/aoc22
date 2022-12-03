@@ -1,17 +1,11 @@
 with open("3.input") as f:
     lines = [line.strip() for line in f.readlines()]
-
-def find_one(a, b):
-    for x in a:
-        for y in b:
-            if x==y:    
-                return x
                 
 result_letters = []
 for line in lines:
-    a = line[:len(line)//2]
-    b = line[len(line)//2:]
-    result_letters.append(find_one(a,b))
+    a = set(line[:len(line)//2])
+    b = set(line[len(line)//2:])
+    result_letters.append((a & b).pop())
     
 result = 0
 for r in result_letters:
