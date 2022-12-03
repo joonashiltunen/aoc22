@@ -13,8 +13,4 @@ def to_priority(r):
         return r - ord('a') + 1
     return r - ord('A') + 27
 
-result = 0
-for r in result_letters:
-    result += to_priority(r)
-
-print(result)
+print(sum(map(to_priority, result_letters)))
