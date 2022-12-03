@@ -10,14 +10,14 @@ while i < len(lines):
     result_letters.append((a & b & c).pop())
     i += 3
     
-result = 0
-for r in result_letters:
+def to_priority(r):
     r = ord(r)
     if r >= ord('a'):
-        r = r - ord('a') + 1
-    else:
-        r = r - ord('A') + 27
-    print(r)
-    result += r
+        return r - ord('a') + 1
+    return r - ord('A') + 27
+    
+result = 0
+for r in result_letters:
+    result += to_priority(r)
 
 print(result)
