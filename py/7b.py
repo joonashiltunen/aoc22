@@ -4,10 +4,6 @@ class Dir():
         self.parent = parent
         self.size = 0 # ONLY files on this exact level
         self.children = []
-    def __repr__(self):
-        return f"name={self.name}, parent={self.parent and self.parent.name}, size={self.size}, children={self.children}"
-    def __str__(self):
-        return self.__repr__()
     
 dirs = [] # yeah this is probably horribly unnecessary and ugly
 current_dir = root = Dir("/", None)
