@@ -16,7 +16,6 @@ I = iter(open("7.input").readlines())
 next(I) # skip first line with cd /
 try:
     while line := next(I):
-        print(line)
         if line[0] == "$":
             if line[2:4] == "cd":
                 d_str = line.split()[-1]
@@ -34,7 +33,6 @@ try:
             dirs.append(new_dir)
                 
 except StopIteration:
-    print(dirs)
     def dir_size(d):
         return sum([dir_size(c) for c in d.children]) + d.size
       
