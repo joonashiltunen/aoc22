@@ -5,7 +5,7 @@ class Dir():
         self.size = 0
         self.children = []
     
-dirs = [] # yeah this is probably horribly unnecessary and ugly
+dirs = []
 current_dir = Dir("/", None)
 
 for line in open("7.input").readlines()[1:]:
