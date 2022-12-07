@@ -23,15 +23,9 @@ try:
                 if d_str == "..":
                     current_dir = current_dir.parent
                 else:
-                    found = False
                     for c in current_dir.children:
                         if c.name == d_str:
-                            if found:
-                                raise Exception("two children found")
                             current_dir = c
-                            found = True
-                    if not found:
-                        raise Exception("child not found")
         elif line[0] != "d": # not dir -> size
             current_dir.size += int(line.split()[0])
         elif line[0] == "d": # dir
