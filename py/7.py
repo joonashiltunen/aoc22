@@ -2,7 +2,7 @@ class Dir():
     def __init__(self, name, parent):
         self.name = name
         self.parent = parent
-        self.size = 0
+        self.total_size = 0
         self.children = []
     
 dirs = []
@@ -18,11 +18,11 @@ for line in open("7.input").readlines()[1:]:
     elif line[0].isdigit():
         dir_size_to_increase = current_dir
         while dir_size_to_increase:
-            dir_size_to_increase.size += int(line.split()[0])
+            dir_size_to_increase.total_size += int(line.split()[0])
             dir_size_to_increase = dir_size_to_increase.parent
     elif line.startswith("dir"):
         new_dir = Dir(line.split()[-1], current_dir)
         current_dir.children.append(new_dir)
         dirs.append(new_dir)
 
-print(sum([d.size for d in dirs if d.size < 100000]))
+print(sum([d.total_size for d in dirs if d.total_size < 100000]))
