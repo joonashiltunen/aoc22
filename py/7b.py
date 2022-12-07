@@ -18,7 +18,6 @@ try:
     while line := next(I):
         print(line)
         if line[0] == "$":
-            LS_ON = False
             if line[2:4] == "cd":
                 d_str = line.split()[-1]
                 if d_str == "..":
@@ -33,10 +32,7 @@ try:
                             found = True
                     if not found:
                         raise Exception("child not found")
-            elif line[2:4] == "ls":
-                LS_ON = True
         elif line[0] != "d": # not dir -> size
-            if not LS_ON: raise Exception("unexpected size")
             current_dir.size += int(line.split()[0])
         elif line[0] == "d": # dir
             new_dir = Dir(line.split()[-1], current_dir)
