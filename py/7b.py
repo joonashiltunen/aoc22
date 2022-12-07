@@ -25,9 +25,5 @@ for line in open("7.input").readlines()[1:]:
         current_dir.children.append(new_dir)
         dirs.append(new_dir)
 
-result = root.size
 extra_space_needed = root.size + 30000000 - 70000000
-for d in dirs:
-    if d.size > extra_space_needed and d.size < result:
-        result = d.size
-print(result)
+print(min([d.size for d in dirs if d.size > extra_space_needed]))

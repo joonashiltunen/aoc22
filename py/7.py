@@ -25,8 +25,4 @@ for line in open("7.input").readlines()[1:]:
         current_dir.children.append(new_dir)
         dirs.append(new_dir)
 
-result = 0
-for d in dirs:
-    if d.size < 100000:
-        result += d.size
-print(result)
+print(sum([d.size for d in dirs if d.size < 100000]))
