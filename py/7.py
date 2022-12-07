@@ -51,10 +51,7 @@ except StopIteration:
     print(dirs)
     def dir_size(d):
         return sum([dir_size(c) for c in d.children]) + d.size
-        
-    import sys
-    sys.setrecursionlimit(15000) # uhhhh yeah
-    
+      
     result = 0
     for d in dirs:
         d_size = dir_size(d)
