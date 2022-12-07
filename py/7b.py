@@ -23,9 +23,6 @@ try:
                 d_str = line.split()[-1]
                 if d_str == "..":
                     current_dir = current_dir.parent
-                #elif d_str in dirs: # existing dir?!
-                #    d = dirs[d_str]
-                #    current_dir = d
                 else:
                     found = False
                     for c in current_dir.children:
@@ -36,7 +33,6 @@ try:
                             found = True
                     if not found:
                         raise Exception("child not found")
-                #print("CD"+line)
             elif line[2:4] == "ls":
                 LS_ON = True
         elif line[0] != "d": # not dir -> size
