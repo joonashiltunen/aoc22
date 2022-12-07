@@ -10,11 +10,11 @@ current_dir = root = Dir("/", None)
 
 for line in open("7.input").readlines()[1:]:
     if line.startswith("$ cd"):
-        d_str = line.split()[-1]
-        if d_str == "..":
+        cd_target = line.split()[-1]
+        if cd_target == "..":
             current_dir = current_dir.parent
         else:
-            current_dir = next(c for c in current_dir.children if c.name == d_str)
+            current_dir = next(c for c in current_dir.children if c.name == cd_target)
     elif line[0].isdigit():
         dir_size_to_increase = current_dir
         while dir_size_to_increase:
