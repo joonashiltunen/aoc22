@@ -8,7 +8,7 @@ class Dir():
 dirs = [] # yeah this is probably horribly unnecessary and ugly
 current_dir = root = Dir("/", None)
 
-for line in open("7.input").readlines()[1:]: # skip first line with [1:]
+for line in open("7.input").readlines()[1:]:
     if line.startswith("$ cd"):
         d_str = line.split()[-1]
         if d_str == "..":
