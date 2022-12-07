@@ -18,7 +18,7 @@ for line in open("7.input").readlines()[1:]: # skip first line with [1:]
                 for c in current_dir.children:
                     if c.name == d_str:
                         current_dir = c
-    elif line[0] != "d": # not dir -> size
+    elif line[0].isdigit():
         current_dir.size += int(line.split()[0])
     elif line[0] == "d": # dir
         new_dir = Dir(line.split()[-1], current_dir)
