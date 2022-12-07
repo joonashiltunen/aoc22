@@ -9,15 +9,14 @@ dirs = [] # yeah this is probably horribly unnecessary and ugly
 current_dir = root = Dir("/", None)
 
 for line in open("7.input").readlines()[1:]: # skip first line with [1:]
-    if line[0] == "$":
-        if line[2:4] == "cd":
-            d_str = line.split()[-1]
-            if d_str == "..":
-                current_dir = current_dir.parent
-            else:
-                for c in current_dir.children:
-                    if c.name == d_str:
-                        current_dir = c
+    if line.startswith("$ cd"):
+        d_str = line.split()[-1]
+        if d_str == "..":
+            current_dir = current_dir.parent
+        else:
+            for c in current_dir.children:
+                if c.name == d_str:
+                    current_dir = c
     elif line[0].isdigit():
         current_dir.size += int(line.split()[0])
     elif line.startswith("dir"):
