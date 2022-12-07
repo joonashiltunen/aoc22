@@ -27,17 +27,11 @@ for line in open("7.input").readlines()[1:]: # skip first line with [1:]
 def dir_size(d):
     return sum([dir_size(c) for c in d.children]) + d.size
 
-root_size = dir_size(root)
-
-
+result = root_size = dir_size(root)
 free_space_needed = 30000000
 free_space = 70000000-root_size
-result = root_size
 for d in dirs:
     d_size = dir_size(d)
     if d_size > free_space_needed - free_space and d_size < result:
         result = d_size
 print(result)
-            
-            
-    
