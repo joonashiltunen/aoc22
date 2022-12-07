@@ -27,7 +27,6 @@ for line in open("7.input").readlines()[1:]:
 
 result = 0
 for d in dirs:
-    d_size = d.size
-    if d_size < 100000:
-        result += d_size
+    if d.size < 100000:
+        result += d.size
 print(result)

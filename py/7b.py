@@ -28,7 +28,6 @@ for line in open("7.input").readlines()[1:]:
 result = root.size
 extra_space_needed = root.size + 30000000 - 70000000
 for d in dirs:
-    d_size = d.size
-    if d_size > extra_space_needed and d_size < result:
-        result = d_size
+    if d.size > extra_space_needed and d.size < result:
+        result = d.size
 print(result)
