@@ -3,7 +3,7 @@ class Dir():
         self.name = name
         self.parent = parent
         self.size = 0 # ONLY files on this exact level
-        self.children = [] # strings only
+        self.children = []
     def __repr__(self):
         return f"name={self.name}, parent={self.parent and self.parent.name}, size={self.size}, children={self.children}"
     def __str__(self):
