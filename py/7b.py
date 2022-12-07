@@ -25,9 +25,9 @@ for line in open("7.input").readlines()[1:]:
         current_dir.children.append(new_dir)
         dirs.append(new_dir)
 
-result = root_size = root.size
+result = root.size
 free_space_needed = 30000000
-free_space = 70000000-root_size
+free_space = 70000000-root.size
 for d in dirs:
     d_size = d.size
     if d_size > free_space_needed - free_space and d_size < result:
