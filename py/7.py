@@ -14,9 +14,7 @@ for line in open("7.input").readlines()[1:]: # skip first line with [1:]
         if d_str == "..":
             current_dir = current_dir.parent
         else:
-            for c in current_dir.children:
-                if c.name == d_str:
-                    current_dir = c
+            current_dir = next(c for c in current_dir.children if c.name == d_str)
     elif line[0].isdigit():
         current_dir.size += int(line.split()[0])
     elif line.startswith("dir"):
