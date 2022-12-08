@@ -1,79 +1,24 @@
 m = []
-vis = set()
-
 for line in open("8.input").readlines():
     m.append(list(map(int, list(line.strip()))))
-    
-ylimit = len(m)-1
-xlimit = len(m[0])-1
 
-print(xlimit, ylimit)
+vecsum = lambda v1, v2: (v1[0]+v2[0], v1[1]+v2[1])
 
-def down(val, y, x):
-    print("down")
-    yi = y+1
-    score=1
-    while yi<=ylimit:
-        if m[yi][x] >= val:
-            print(score)
-            return score
-        yi += 1
-        score += 1
-    return score-1
-    
-def up(val, y, x):
-    print("up")
-    yi = y-1
-    score=1
-    while yi>=0:
-        print(m[yi][x])
-        if m[yi][x] >= val:
-            print(score)
-            return score
-        yi -= 1
-        score += 1
-    return score-1
-    
-def right(val, y, x):
-    print("right")
-    xi = x+1
-    score=1
-    while xi<=xlimit:
-        print(m[y][xi])
-        if m[y][xi] >= val:
-            print(score)
-            return score
-        xi += 1
-        score += 1
-    return score-1
-    
-def left(val, y, x):
-    print("left")
-    xi = x-1
-    score=1
-    while xi>=0:
-        print(m[y][xi])
-        if m[y][xi] >= val:
-            print(score)
-            return score
-        xi -= 1
-        score += 1
-    return score-1
+def search(val, vec, dirvec):
+    res = 0
+    vec = vecsum(vec, dirvec)
+    while vec[0]>=0 and vec[1]>=0 and vec[0]<=len(m[0])-1 and vec[1]<=len(m)-1:
+        res += 1
+        if m[vec[1]][vec[0]] >= val:
+            return res
+        vec = vecsum(vec, dirvec)
+    return res
 
-for x in range(len(m[0])):
-    for y in range(len(m)):
-        print()
-        print()
-        t=(x,y)
-        if x==0 or y==0 or x==xlimit or y==ylimit:
-            continue
-        
-        val=m[y][x]
-        print(t,  val)
-        score=[up(val, y, x), left(val, y, x), down(val, y, x), right(val, y, x)]
-        vis.add(score[0]*score[1]*score[2]*score[3])
+result = 0
+for x in range(1, len(m[0])-1):
+    for y in range(1, len(m)-1):
+        sd = lambda d: search(m[y][x], (x,y), d)
+        score = sd((0,1)) * sd((0,-1)) * sd((-1,0)) * sd((1,0))
+        result = max(score, result)
 
-                
-            
-print(vis)
-print(max(vis))
+print(result)
